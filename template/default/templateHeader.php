@@ -17,6 +17,8 @@
 
     <!-- Project Specific Head Includes -->
     <?php recurseInsert("includes/headerIncludes.php","php") ?>
+    <!-- Page Specific -->
+    <?php recurseInsert("headerIncludes.php","php") ?>
 </head>
 
 <body>
