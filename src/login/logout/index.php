@@ -20,4 +20,5 @@
 
 <?php
     templates::display('footer');
+
 ?>
