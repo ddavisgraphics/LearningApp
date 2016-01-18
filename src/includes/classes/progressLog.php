@@ -49,6 +49,38 @@
             array_push($loggedPages, $page);
             session::set('loggedpages', $loggedPages);
         }
+
+
+        public static function saveSession(){
+            $engine    = EngineAPI::singleton();
+            $localvars = localvars::getInstance();
+            $db        = db::get($localvars->get('dbConnectionName'));
+
+            $sql       = "INSERT INTO `session`(username,sessionPages,ipAddr) VALUES(?,?,?)";
+            $validate  = new validate;
+
+            $username  = session::get('username');
+            $pages     = session::get('loggedPages');
+            $pages     = dbSanitize(implode(',', $pages));
+            $ip        = $_SERVER['REMOTE_ADDR'];
+            $sqlArray  = array($username, $pages, $ip);
+
+            $db->beginTransaction();
+            try {
+                $sqlResult = $db->query($sql, $sqlArray);
+
+                if($sqlResult->error()) {
+                    throw new Exception("ERROR SQL" . $sqlResult->errorMsg());
+                }
+
+                $db->commit();
+            } catch (Exception $e) {
+                $db->rollback();
+                $localvars->set('feedback', $e->getMessage());
+                errorHandle::errorMsg($e->getMessage());
+            }
+
+        }
     }
 
 ?>
