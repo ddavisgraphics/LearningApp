@@ -9,7 +9,7 @@
         $loginHTML .= "</div>";
     } else {
         $loginHTML = "<div class='login'>";
-        $loginHTML .= "<a href='' class='btn btn-primary logout'> Logout </a>";
+        $loginHTML .= "<a href='/login/logout' class='btn btn-primary logout'> Logout </a>";
         $loginHTML .= "</div>";
     }
 
