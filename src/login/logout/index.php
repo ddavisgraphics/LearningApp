@@ -3,11 +3,13 @@
     templates::display('header');
 
     if(LoginAuth::checkAuthorization()){
-        // Save The Data
         ProgressLog::saveSession();
-        // Logout User
         LoginAuth::logout();
+        header("refresh:3;url=/?loggedOut=true");
+    } else {
+        header("refresh:3;url=/?loggedOut=false");
     }
+
 ?>
 
 <div class="row">
