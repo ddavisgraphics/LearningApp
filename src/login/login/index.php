@@ -7,6 +7,19 @@
         $username = dbSanitize($login['username']);
         $pass     = dbSanitize($login['password']);
         $accepted = LoginAuth::loginUser($username, $pass);
+
+        if($accepted){
+            $feedback = "<div class='alert alert-success'> Logged In Successfully! </div>";
+            header("refresh:3;url=/");
+        } else {
+            if(!LoginAuth::checkUsername($username)){
+                $feedback = "<div class='alert alert-danger'> Login Failed, wrong <strong><u> username </u></strong> please try again </div>";
+            } else {
+                 $feedback = "<div class='alert alert-danger'> Login Failed, wrong <strong><u> password </u></strong> please try again </div>";
+            }
+        }
+
+        $localvars->set('feedback', $feedback);
     }
 ?>
 
