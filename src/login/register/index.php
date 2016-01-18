@@ -40,12 +40,7 @@
             $errorString = "<div class='alert alert-danger'><ul><li>".implode("</li><li>", $errors)."</li></ul></div>";
             $localvars->set('feedback', $errorString);
         }
-
-
     }
-
-
-
 ?>
 
   <div class="col-xs-12 col-sm-offset-2 col-sm-8">
