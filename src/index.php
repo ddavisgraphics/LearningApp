@@ -1,8 +1,6 @@
 <?php
 	require_once "includes/engine.php";
 	templates::display('header');
-
-	$authorized = LoginAuth::checkAuthorization();
 ?>
 
 <div class="jumbotron">
