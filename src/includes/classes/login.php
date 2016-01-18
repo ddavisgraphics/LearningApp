@@ -90,6 +90,7 @@
 
         public static function logout(){
             session::destroy("username");
+            session::destroy('loggedPages');
         }
 
         /**
