@@ -14,7 +14,6 @@
 
             $db->beginTransaction();
 
-
             try {
                 $sqlResult = $db->query($sql, array($ip,$page,$date,$timeStamp));
 
